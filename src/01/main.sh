@@ -1,14 +1,12 @@
 #!/bin/bash
 
-# Check if the script is run with one parameter
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <parameter>"
-    exit 1
-fi
-
-# Check if the parameter is a number
-if [[ $1 =~ ^[0-9]+$ ]]; then
-    echo "Invalid input: Parameter cannot be a number."
+# Check if the number of arguments is not equal to 1
+if [ $# != 1 ]; then
+    echo "There must be one parameter"
+# Check if the argument matches a numeric pattern
+elif [[ $1 =~ ^[+-]?[0-9]+([.,][0-9])?$ ]]; then
+    echo "The parameter must be textual"
+# If the argument is neither empty nor numeric, display the entered parameter
 else
-    echo "Parameter: $1"
+    echo "Entered parameter: $1"
 fi
